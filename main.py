@@ -62,16 +62,14 @@ for filename in os.listdir(folder):
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-if debug: app = Flask(__name__, static_url_path='', static_folder =  static)
-else: app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder =  static)
 
 UPLOAD_FOLDER = 'templates/' + qbs_dir
 ALLOWED_EXTENSIONS = {'qb'}
 MAX_CONTENT_PATH = 512 * 1024 # Max upload size (bytes)
 
-if debug:
-    @app.route('/')
-    def index(): return render_template('index.html')
+@app.route('/')
+def index(): return render_template('index.html')
 
 @app.route('/api/new-game/', methods = ['POST'])
 def new_game():
