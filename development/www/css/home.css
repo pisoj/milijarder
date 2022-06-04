@@ -1,0 +1,23 @@
+.box {
+    height: 180px;
+    width: 50vw;
+    max-width: 400px;
+}
+
+button {
+    margin: 0;
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 20px;
+    display: block;
+    position: relative;
+    background-color: var(--button-color);
+    color: white;
+    width: 80%;
+    font-size: 220%;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5px;
+}
