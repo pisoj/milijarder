@@ -1,5 +1,6 @@
 FROM python:latest
 
-COPY src app
-RUN pip install flask gunicorn
-WORKDIR app
+COPY src /app
+RUN pip install flask uwsgi
+RUN chown -R /app $USER
+WORKDIR /app
