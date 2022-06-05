@@ -1,5 +1,5 @@
 FROM python:latest
 
-COPY src /app
+COPY src app
 RUN pip install flask gunicorn
-WORKDIR /app
+WORKDIR app
