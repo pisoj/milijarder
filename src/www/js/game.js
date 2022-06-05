@@ -46,6 +46,7 @@ function load_question(qb, q_number, past_q) {
 function check(qb, q) {
     // Check
     var correct = false;
+    joker_used = false;
     if (document.getElementById('a').checked && qb[7 * q - 7 + 5] == 'A') { correct = true; }
     if (document.getElementById('b').checked && qb[7 * q - 7 + 5] == 'B') { correct = true; }
     if (document.getElementById('c').checked && qb[7 * q - 7 + 5] == 'C') { correct = true; }
