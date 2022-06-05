@@ -20,7 +20,7 @@ from datetime import datetime
 import os, random, shutil
 
 host = '0.0.0.0'
-port = int(os.environ['PORT'])
+port = 8000
 static = 'www'
 qbs_dir = 'qb' # Question bases directory inside templates
 debug = False
