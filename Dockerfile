@@ -1,6 +1,7 @@
 FROM python:latest
 
 COPY src /app
-RUN pip3 install flask uwsgi
+RUN pip install --upgrade pip
+RUN pip install uWsgi
 RUN chown -R $USER:$USER /app
 WORKDIR /app
