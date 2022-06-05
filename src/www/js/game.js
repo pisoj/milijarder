@@ -170,6 +170,6 @@ window.onload = function() {
     };
     
     $.post(url, data, function(raw_qb, status) {
-        wait('Pitanje?/[?=end]/Aa/[?=end]/Bb/[?=end]/Cc/[?=end]/Dd/[?=end]/A/[?=end]/Joker!!/[?=end]/Pitanje2?/[?=end]/Aa2/[?=end]/Bb2/[?=end]/Cc2/[?=end]/Dd2/[?=end]/B/[?=end]/Joker2!!'.split('/[?=end]/'));
+        wait(raw_qb.split('/[?=end]/'));
     });
 };
