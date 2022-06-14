@@ -27,6 +27,13 @@ function new_game() {
         joker_enabled: document.getElementById('enable-joker').checked
     };
 
+    document.getElementById('game-name').disabled = true;
+    document.getElementById('time').disabled = true;
+    document.getElementById('enable-joker').disabled = true;
+    document.getElementById('public').disabled = true;
+    document.getElementById('qb').disabled = true;
+    document.getElementById('make').disabled = true;
+
     $.post(url, data, function(raw_response, status) {
         var response = raw_response.split("|");
         document.cookie = 'game_id=' + response[0];

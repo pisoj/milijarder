@@ -1,7 +1,8 @@
 .box {
     margin-top: 22px;
     height: 210px;
-    width: 400px;
+    width: max-content;
+    min-width: 400px;
 }
 
 input {
@@ -37,3 +38,13 @@ input#public-games {
     left: 130px;
     width: 180px;
 }
+
+text.mid {
+    top: 30px;
+    left: 0;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    white-space: nowrap;
+}
+.topper { top: 15% !important; margin-left: 20px; }
+button.topper { left: 75px; }

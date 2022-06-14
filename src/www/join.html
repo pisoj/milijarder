@@ -2,22 +2,23 @@
 <meta charset="UTF-8">
 <html>
     <head>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/join.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/join.css">
         <link rel="icon" type="image/x-icon" href="img/fav.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script src="js/main.js" type="text/javascript"></script>
-        <script src="js/join.js" type="text/javascript"></script>
+        <script src="/js/main.js" type="text/javascript"></script>
+        <script src="/js/join.js" type="text/javascript"></script>
         <title>Pridruži se - Multi Milijarder</title>
     </head>
     <body>
         <center><img id="logo" src="img/multi_logo-300.png" alt="Multi Milijarder"></center>
         <div class="box">
-            <text>ID:</text>
+            <center><text class="mid total-hide" id="game-name"></text></center>
+            <text id="id-text">ID:</text>
             <input id="id" type="number">
             <text style="left: 30%;" id="pin-text">PIN:</text>
             <input id="pin" type="number" style="left: 40%; width: 75px;"><br>
-            <text>Ime:</text>
+            <text id="name-text">Ime:</text>
             <input id="name" type="text" style="left: 44%; width: 270px;"><br>
             <input list="public-games-options" placeholder="Javne igre" id="public-games" onchange="select_public_game()"/>
             <datalist id="public-games-options">

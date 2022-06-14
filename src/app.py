@@ -15,7 +15,8 @@
 -4 = Timeout
 '''
 
-from flask import Flask, render_template, request
+from crypt import methods
+from flask import Flask, redirect, render_template, request
 from datetime import datetime
 import os, random, shutil
 
@@ -67,7 +68,7 @@ ALLOWED_EXTENSIONS = {'qb'}
 MAX_CONTENT_PATH = 512 * 1024 # Max upload size (bytes)
 
 @app.route('/')
-def index(): return render_template('index.html')
+def index(): return redirect('/home.html', code = 301)
 
 @app.route('/api/new-game/', methods = ['POST'])
 def new_game():
@@ -241,6 +242,15 @@ def get_public_games():
         to_return_ids += i + '/[?=end]/'
         to_return_names += game_name[int(i)] + '/[?=end]/'
     return  to_return_ids + '/[?=names]/' + to_return_names
+@app.route('/api/get-game-name/', methods = ['POST'])
+def get_game_name():
+    try:
+        if request.form['game_pin'] == game_pin[int(request.form['game_id'])]:
+            return game_name[int(request.form['game_id'])]
+        else:
+            return '-2'
+    except:
+        return '-1'
 
 if __name__ == "__main__":
     app.run(host = host, port = port, debug = debug)

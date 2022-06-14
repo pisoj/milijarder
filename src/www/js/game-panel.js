@@ -9,6 +9,11 @@ window.addEventListener("beforeunload", function (e) {
     return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
 });
 
+function share() {
+    var url = encodeURI(window.location.origin + '/join.html#' + getCookie('game_id') + ':' + getCookie('game_pin'))
+    prompt('Podijeli poveznicu igre:', url);
+}
+
 function refresh() {
     setTimeout(function() {
         if (document.getElementById('action').textContent == 'Započni') {

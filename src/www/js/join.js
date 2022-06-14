@@ -1,16 +1,36 @@
 var public_games_list = [];
 
 window.onload = function() {
-    $.post('/api/get-public-games/', {}, function(raw_response, status) {
-        var response = raw_response.split('/[?=names]/');
-        var ids = response[0].split('/[?=end]/');
-        var names = response[1].split('/[?=end]/');
-        var to_add = '';
-        for (var i = 0; i < ids.length - 1; i++) {
-            to_add += '<option value="' + names[i] + ' (' + ids[i] + ')' + '"/>';
-            public_games_list.push(names[i] + ' (' + ids[i] + ')'); };
-        document.getElementById('public-games-options').innerHTML = to_add;
-    });
+    if(location.hash) {
+        $.post('/api/get-game-name/', {
+            "game_id" : getCookie('game_id'),
+            "game_pin" : getCookie('game_pin')
+        }, function(response, status) {
+            document.getElementById('game-name').innerHTML = response; });
+        document.getElementById('id').value = location.hash.substring(1).split(':')[0];
+        document.getElementById('pin').value = location.hash.substring(1).split(':')[1];
+        document.getElementById('name').placeholder = 'Unesite ime!';
+        document.getElementById('name').classList.add('topper');
+        document.getElementById('join').classList.add('topper');
+        document.getElementById('name-text').classList.add('total-hide');
+        document.getElementById('game-name').classList.remove('total-hide');
+        document.getElementById('id-text').classList.add('total-hide');
+        document.getElementById('pin-text').classList.add('total-hide');
+        document.getElementById('id').classList.add('total-hide');
+        document.getElementById('pin').classList.add('total-hide');
+        document.getElementById('public-games').classList.add('hide');
+    } else {
+        $.post('/api/get-public-games/', {}, function(raw_response, status) {
+            var response = raw_response.split('/[?=names]/');
+            var ids = response[0].split('/[?=end]/');
+            var names = response[1].split('/[?=end]/');
+            var to_add = '';
+            for (var i = 0; i < ids.length - 1; i++) {
+                to_add += '<option value="' + names[i] + ' (' + ids[i] + ')' + '"/>';
+                public_games_list.push(names[i] + ' (' + ids[i] + ')'); };
+            document.getElementById('public-games-options').innerHTML = to_add;
+        });
+    }
 };
 
 function select_public_game() {
@@ -39,6 +59,12 @@ function join() {
         game_pin: document.getElementById('pin').value,
         gamer_name: document.getElementById('name').value
     };
+
+    document.getElementById('id').disabled = true;
+    document.getElementById('pin').disabled = true;
+    document.getElementById('name').disabled = true;
+    document.getElementById('public-games').disabled = true;
+    document.getElementById('join').disabled = true;
 
     $.post(url, data, function(raw_response, status) {
         if(raw_response == '-1') {
